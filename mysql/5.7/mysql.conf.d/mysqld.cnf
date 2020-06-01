@@ -1,0 +1,68 @@
+[mysqld]
+pid-file	= /var/run/mysqld/mysqld.pid
+socket		= /var/run/mysqld/mysqld.sock
+datadir		= /var/lib/mysql
+tmpdir      = /tmp/mysql
+
+bind-address    = 0.0.0.0
+port            = 3306
+default_time_zone   = '+08:00'
+
+# 优化配置
+server-id   = 111
+autocommit  = 1
+symbolic-links  = 0
+max_connections = 1000
+max_connect_errors  = 6000
+wait_timeout    = 60
+interactive_timeout = 60
+
+#skip-grant-tables=1
+#skip-host-cache
+skip-name-resolve   = 1
+
+query_cache_size    = 256M
+tmp_table_size      = 128M
+join_buffer_size    = 128M
+max_allowed_packet  = 16M
+read_buffer_size    = 16M
+read_rnd_buffer_size    = 32M
+sort_buffer_size        = 32M
+
+sql_mode = "STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER"
+explicit_defaults_for_timestamp = 1
+
+# 编码相关
+character_set_server = utf8mb4
+collation_server = utf8mb4_unicode_ci
+
+# 存储引擎
+default_storage_engine=InnoDB
+innodb_buffer_pool_size = 1G
+innodb_log_file_size    = 256M
+innodb_flush_log_at_trx_commit = 1
+innodb_flush_method = O_DIRECT
+
+
+# log
+general_log = 1
+general_log_file    = /var/log/mysql/mysql.log
+log-error	= /var/log/mysql/error.log
+log_output  = 'FILE,TABLE'
+
+# bin-log
+log_bin     = /var/log/mysql/mysql-bin
+#binlog_format  = row
+max_binlog_size   = 512M
+
+# slow-query-log
+slow_query_log = 1  # 开启慢查询日志收集
+slow_query_log_file = /var/log/mysql/slow-query.log   # 慢查询日志位置
+log_queries_not_using_indexes = 1   # 是否记录未使用索引的语句
+log_slow_admin_statements = 1   # 慢查询也记录那些慢的optimize table，analyze table和alter table语句
+log_slow_slave_statements = 1   # 记录由Slave所产生的慢查询
+log_throttle_queries_not_using_indexes = 10 # 设定每分钟记录到日志的未使用索引的语句数目，超过这个数目后只记录语句数量和花费的总时间
+long_query_time = 20 # 设置记录慢查询超时时间
+min_examined_row_limit = 100    # 查询检查返回少于该参数指定行的SQL不被记录到慢查询日志
+
+expire_logs_days = 90   # 日志自动过期清理天数
