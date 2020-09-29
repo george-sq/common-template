@@ -1,0 +1,11 @@
+version: '3.7'
+
+services:
+
+  ubuntu-server:
+    image: ubuntu:20.04
+    container_name: qiao
+    hostname: qiao
+    tty: true
+
+
