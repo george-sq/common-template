@@ -4,19 +4,14 @@ MAINTAINER qiao
 
 WORKDIR /root
 
-COPY sources.list /etc/apt/sources.list
-
 ADD jdk-8u261-linux-x64.tar.gz /usr/local
 ADD apache-maven-3.6.3-bin.tar.gz /usr/local
 ADD apache-tomcat-8.5.55.tar.gz /usr/local
 
 COPY settings.xml /usr/local/apache-maven-3.6.3/conf/settings.xml
 
-ENV JAVA_HOME /usr/local/jdk1.8.0_261
-ENV MAVEN_HOME /usr/local/apache-maven-3.6.3
-ENV TOMCAT_HOME /usr/local/apache-tomcat-8.5.55
-ENV PATH $JAVA_HOME/bin:$MAVEN_HOME/bin:$TOMCAT_HOME/bin:$PATH
-ENV DEBIAN_FRONTEND noninteractive
+ENV JAVA_HOME="/usr/local/jdk1.8.0_261" MAVEN_HOME="/usr/local/apache-maven-3.6.3" TOMCAT_HOME="/usr/local/apache-tomcat-8.5.55"  DEBIAN_FRONTEND=noninteractive
+ENV PATH=$JAVA_HOME/bin:$MAVEN_HOME/bin:$TOMCAT_HOME/bin:$PATH
 
 COPY sources.list /etc/apt/sources.list
 
