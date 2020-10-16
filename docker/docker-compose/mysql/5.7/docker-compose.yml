@@ -16,6 +16,7 @@ services:
       MYSQL_ROOT_PASSWORD: "qwer4321QWER4321"
     networks:
       db_net:
+        ipv4_address: 172.21.0.99
         aliases:
           - mysql57
     restart: always

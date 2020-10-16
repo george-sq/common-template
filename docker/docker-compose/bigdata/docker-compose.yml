@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
     master-0:
-        image: qiao/ubuntu-20.04:v1
+        image: qiao/ubuntu-18.04:v1
         container_name: master-0
         hostname: master-0
         privileged: true
@@ -13,7 +13,7 @@ services:
         restart: always
 
     slave-0:
-        image: qiao/ubuntu-20.04:v1
+        image: qiao/ubuntu-18.04:v1
         container_name: slave-0
         hostname: slave-0
         privileged: true
@@ -24,7 +24,7 @@ services:
         restart: always
 
     slave-1:
-        image: qiao/ubuntu-20.04:v1
+        image: qiao/ubuntu-18.04:v1
         container_name: slave-1
         hostname: slave-1
         privileged: true
@@ -35,7 +35,7 @@ services:
         restart: always
 
     slave-2:
-        image: qiao/ubuntu-20.04:v1
+        image: qiao/ubuntu-18.04:v1
         container_name: slave-2
         hostname: slave-2
         privileged: true
@@ -46,7 +46,7 @@ services:
         restart: always
 
     slave-3:
-        image: qiao/ubuntu-20.04:v1
+        image: qiao/ubuntu-18.04:v1
         container_name: slave-3
         hostname: slave-3
         privileged: true

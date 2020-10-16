@@ -6,11 +6,11 @@ WORKDIR /root
 
 ADD jdk-8u261-linux-x64.tar.gz /usr/local
 ADD apache-maven-3.6.3-bin.tar.gz /usr/local
-ADD apache-tomcat-8.5.55.tar.gz /usr/local
+ADD apache-tomcat-8.5.57.tar.gz /usr/local
 
 COPY settings.xml /usr/local/apache-maven-3.6.3/conf/settings.xml
 
-ENV JAVA_HOME="/usr/local/jdk1.8.0_261" MAVEN_HOME="/usr/local/apache-maven-3.6.3" TOMCAT_HOME="/usr/local/apache-tomcat-8.5.55"  DEBIAN_FRONTEND=noninteractive
+ENV JAVA_HOME="/usr/local/jdk1.8.0_261" MAVEN_HOME="/usr/local/apache-maven-3.6.3" TOMCAT_HOME="/usr/local/apache-tomcat-8.5.57"  DEBIAN_FRONTEND=noninteractive
 ENV PATH=$JAVA_HOME/bin:$MAVEN_HOME/bin:$TOMCAT_HOME/bin:$PATH
 
 COPY sources.list /etc/apt/sources.list
@@ -28,6 +28,7 @@ RUN apt-get update \
     && apt-get install -y iputils-ping \
     && apt-get install -y openssh-server \
     && apt-get install -y openssh-client \
+    && apt-get install -y apache2 \
     && mkdir downloads
 
 ENTRYPOINT /bin/bash
