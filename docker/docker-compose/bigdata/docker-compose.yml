@@ -5,6 +5,10 @@ services:
         image: qiao/ubuntu-18.04:v1
         container_name: master-0
         hostname: master-0
+        environment:
+            - TZ=Asia/Shanghai
+        volumes:
+            - $PWD/hosts.temp:/etc/hosts
         privileged: true
         tty: true
         networks:
@@ -16,6 +20,10 @@ services:
         image: qiao/ubuntu-18.04:v1
         container_name: slave-0
         hostname: slave-0
+        environment:
+            - TZ=Asia/Shanghai
+        volumes:
+            - $PWD/hosts.temp:/etc/hosts
         privileged: true
         tty: true
         networks:
@@ -27,6 +35,10 @@ services:
         image: qiao/ubuntu-18.04:v1
         container_name: slave-1
         hostname: slave-1
+        environment:
+            - TZ=Asia/Shanghai
+        volumes:
+            - $PWD/hosts.temp:/etc/hosts
         privileged: true
         tty: true
         networks:
@@ -38,6 +50,10 @@ services:
         image: qiao/ubuntu-18.04:v1
         container_name: slave-2
         hostname: slave-2
+        environment:
+            - TZ=Asia/Shanghai
+        volumes:
+            - $PWD/hosts.temp:/etc/hosts
         privileged: true
         tty: true
         networks:
@@ -49,6 +65,10 @@ services:
         image: qiao/ubuntu-18.04:v1
         container_name: slave-3
         hostname: slave-3
+        environment:
+            - TZ=Asia/Shanghai
+        volumes:
+            - $PWD/hosts.temp:/etc/hosts
         privileged: true
         tty: true
         networks:
