@@ -9,6 +9,7 @@ services:
             - TZ=Asia/Shanghai
         volumes:
             - $PWD/hosts.temp:/etc/hosts
+            - $PWD/sshd_config.temp:/etc/ssh/sshd_config
         privileged: true
         tty: true
         networks:
@@ -24,6 +25,7 @@ services:
             - TZ=Asia/Shanghai
         volumes:
             - $PWD/hosts.temp:/etc/hosts
+            - $PWD/sshd_config.temp:/etc/ssh/sshd_config
         privileged: true
         tty: true
         networks:
@@ -39,6 +41,7 @@ services:
             - TZ=Asia/Shanghai
         volumes:
             - $PWD/hosts.temp:/etc/hosts
+            - $PWD/sshd_config.temp:/etc/ssh/sshd_config
         privileged: true
         tty: true
         networks:
@@ -54,6 +57,7 @@ services:
             - TZ=Asia/Shanghai
         volumes:
             - $PWD/hosts.temp:/etc/hosts
+            - $PWD/sshd_config.temp:/etc/ssh/sshd_config
         privileged: true
         tty: true
         networks:
@@ -69,6 +73,7 @@ services:
             - TZ=Asia/Shanghai
         volumes:
             - $PWD/hosts.temp:/etc/hosts
+            - $PWD/sshd_config.temp:/etc/ssh/sshd_config
         privileged: true
         tty: true
         networks:

@@ -28,6 +28,7 @@ RUN apt-get update \
     && apt-get install -y iputils-ping \
     && apt-get install -y openssh-server \
     && apt-get install -y openssh-client \
+    && apt-get install -y rsync \
     && apt-get install -y apache2  
 
 ENTRYPOINT ["/sbin/init"]
