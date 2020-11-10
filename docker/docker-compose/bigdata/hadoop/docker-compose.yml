@@ -1,0 +1,62 @@
+version: '3.7'
+
+services:
+    master-0:
+        image: qiao/ubuntu-18.04:v1
+        container_name: master-0
+        hostname: master-0
+        environment:
+            - TZ=Asia/Shanghai
+        volumes:
+            - $PWD/../hosts.temp:/etc/hosts
+            - $PWD/../sshd_config.temp:/etc/ssh/sshd_config
+            - $PWD/../data-shared:/root/downloads
+            - $PWD/data/master-0:/root/data
+        privileged: true
+        tty: true
+        networks:
+            db_net:
+                ipv4_address: 172.21.0.100
+        restart: always
+
+    slave-0:
+        image: qiao/ubuntu-18.04:v1
+        container_name: slave-0
+        hostname: slave-0
+        environment:
+            - TZ=Asia/Shanghai
+        volumes:
+            - $PWD/../hosts.temp:/etc/hosts
+            - $PWD/../sshd_config.temp:/etc/ssh/sshd_config
+            - $PWD/../data-shared:/root/downloads
+            - $PWD/data/slave-0:/root/data
+        privileged: true
+        tty: true
+        networks:
+            db_net:
+                ipv4_address: 172.21.0.101
+        restart: always
+
+    slave-1:
+        image: qiao/ubuntu-18.04:v1
+        container_name: slave-1
+        hostname: slave-1
+        environment:
+            - TZ=Asia/Shanghai
+        volumes:
+            - $PWD/../hosts.temp:/etc/hosts
+            - $PWD/../sshd_config.temp:/etc/ssh/sshd_config
+            - $PWD/../data-shared:/root/downloads
+            - $PWD/data/slave-1:/root/data
+        privileged: true
+        tty: true
+        networks:
+            db_net:
+                ipv4_address: 172.21.0.102
+        restart: always
+
+
+networks:
+    db_net:
+        external: true
+        name: db_net

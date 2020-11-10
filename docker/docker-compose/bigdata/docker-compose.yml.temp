@@ -10,8 +10,8 @@ services:
         volumes:
             - $PWD/hosts.temp:/etc/hosts
             - $PWD/sshd_config.temp:/etc/ssh/sshd_config
-            - $PWD/data/data-shared:$HOME/downloads
-            - $PWD/data/master-0:$HOME/data
+            - $PWD/data/data-shared:/root/downloads
+            - $PWD/data/master-0:/root/data
         privileged: true
         tty: true
         networks:
@@ -28,8 +28,8 @@ services:
         volumes:
             - $PWD/hosts.temp:/etc/hosts
             - $PWD/sshd_config.temp:/etc/ssh/sshd_config
-            - $PWD/data/data-shared:$HOME/downloads
-            - $PWD/data/slave-0:$HOME/data
+            - $PWD/data/data-shared:/root/downloads
+            - $PWD/data/slave-0:/root/data
         privileged: true
         tty: true
         networks:
@@ -46,6 +46,8 @@ services:
         volumes:
             - $PWD/hosts.temp:/etc/hosts
             - $PWD/sshd_config.temp:/etc/ssh/sshd_config
+            - $PWD/data/data-shared:/root/downloads
+            - $PWD/data/slave-1:/root/data
         privileged: true
         tty: true
         networks:
@@ -53,15 +55,17 @@ services:
                 ipv4_address: 172.21.0.102
         restart: always
 
-    slave-2:
+    spark-0:
         image: qiao/ubuntu-18.04:v1
-        container_name: slave-2
-        hostname: slave-2
+        container_name: spark-0
+        hostname: spark-0
         environment:
             - TZ=Asia/Shanghai
         volumes:
             - $PWD/hosts.temp:/etc/hosts
             - $PWD/sshd_config.temp:/etc/ssh/sshd_config
+            - $PWD/data/data-shared:/root/downloads
+            - $PWD/data/spark-0:/root/data
         privileged: true
         tty: true
         networks:
@@ -69,15 +73,17 @@ services:
                 ipv4_address: 172.21.0.103
         restart: always
 
-    slave-3:
+    flink-0:
         image: qiao/ubuntu-18.04:v1
-        container_name: slave-3
-        hostname: slave-3
+        container_name: flink-0
+        hostname: flink-0
         environment:
             - TZ=Asia/Shanghai
         volumes:
             - $PWD/hosts.temp:/etc/hosts
             - $PWD/sshd_config.temp:/etc/ssh/sshd_config
+            - $PWD/data/data-shared:/root/downloads
+            - $PWD/data/flink-0:/root/data
         privileged: true
         tty: true
         networks:
