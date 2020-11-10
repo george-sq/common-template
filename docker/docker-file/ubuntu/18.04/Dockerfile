@@ -5,13 +5,13 @@ MAINTAINER qiao
 WORKDIR /root
 
 ADD jdk-8u261-linux-x64.tar.gz /usr/local
+ADD scala-2.13.3.tgz /usr/local
 ADD apache-maven-3.6.3-bin.tar.gz /usr/local
-ADD apache-tomcat-8.5.57.tar.gz /usr/local
 
 COPY settings.xml /usr/local/apache-maven-3.6.3/conf/settings.xml
 
-ENV LANG=C.UTF-8 JAVA_HOME="/usr/local/jdk1.8.0_261" MAVEN_HOME="/usr/local/apache-maven-3.6.3" TOMCAT_HOME="/usr/local/apache-tomcat-8.5.57"  DEBIAN_FRONTEND=noninteractive
-ENV PATH=$JAVA_HOME/bin:$MAVEN_HOME/bin:$TOMCAT_HOME/bin:$PATH
+ENV LANG=C.UTF-8 JAVA_HOME="/usr/local/jdk1.8.0_261" MAVEN_HOME="/usr/local/apache-maven-3.6.3" SCALA_HOME="/usr/local/scala-2.13.3"  DEBIAN_FRONTEND=noninteractive
+ENV PATH=$JAVA_HOME/bin:$MAVEN_HOME/bin:$SCALA_HOME/bin:$PATH
 
 COPY sources.list /etc/apt/sources.list
 
