@@ -10,6 +10,8 @@ services:
         volumes:
             - $PWD/hosts.temp:/etc/hosts
             - $PWD/sshd_config.temp:/etc/ssh/sshd_config
+            - $PWD/data/data-shared:$HOME/downloads
+            - $PWD/data/master-0:$HOME/data
         privileged: true
         tty: true
         networks:
@@ -26,6 +28,8 @@ services:
         volumes:
             - $PWD/hosts.temp:/etc/hosts
             - $PWD/sshd_config.temp:/etc/ssh/sshd_config
+            - $PWD/data/data-shared:$HOME/downloads
+            - $PWD/data/slave-0:$HOME/data
         privileged: true
         tty: true
         networks:
