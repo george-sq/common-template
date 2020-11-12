@@ -8,16 +8,22 @@ services:
         environment:
             - TZ=Asia/Shanghai
             - JAVA_HOME=/usr/local/jdk1.8.0_261
-            - HADOOP_HOME=/root/downloads/hadoop-2.10.1
-            - HADOOP_CONF_DIR=/root/downloads/hadoop-2.10.1/etc/hadoop
+            - HADOOP_HOME=/root/shared/hadoop-2.10.1
+            - HADOOP_CONF_DIR=/root/shared/hadoop-2.10.1/etc/hadoop
         volumes:
             - $PWD/../hosts.temp:/etc/hosts
             - $PWD/../sshd_config.temp:/etc/ssh/sshd_config
-            - $PWD/../data-shared:/root/downloads
+            - $PWD/../data-shared:/root/shared
             - $PWD/data/master-0:/root/data
         privileged: true
         ports:
+            - "50010:50010"
+            - "50020:50020"
+            - "50030:50030"
+            - "50060:50060"
             - "50070:50070"
+            - "50075:50075"
+            - "50090:50090"
         tty: true
         networks:
             db_net:
@@ -33,7 +39,7 @@ services:
         volumes:
             - $PWD/../hosts.temp:/etc/hosts
             - $PWD/../sshd_config.temp:/etc/ssh/sshd_config
-            - $PWD/../data-shared:/root/downloads
+            - $PWD/../data-shared:/root/shared
             - $PWD/data/slave-0:/root/data
         privileged: true
         tty: true
@@ -51,7 +57,7 @@ services:
         volumes:
             - $PWD/../hosts.temp:/etc/hosts
             - $PWD/../sshd_config.temp:/etc/ssh/sshd_config
-            - $PWD/../data-shared:/root/downloads
+            - $PWD/../data-shared:/root/shared
             - $PWD/data/slave-1:/root/data
         privileged: true
         tty: true
@@ -60,8 +66,8 @@ services:
                 ipv4_address: 172.21.0.102
         restart: always
 
-
 networks:
     db_net:
         external: true
         name: db_net
+

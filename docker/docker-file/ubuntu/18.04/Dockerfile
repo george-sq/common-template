@@ -30,7 +30,7 @@ RUN apt-get update \
     && apt-get install -y openssh-client \
     && apt-get install -y rsync \
     && apt-get install -y apache2 \ 
-    && mkdir downloads \
+    && mkdir shared \
     && mkdir data  
 
 ENTRYPOINT ["/sbin/init"]
