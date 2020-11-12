@@ -7,12 +7,17 @@ services:
         hostname: master-0
         environment:
             - TZ=Asia/Shanghai
+            - JAVA_HOME=/usr/local/jdk1.8.0_261
+            - HADOOP_HOME=/root/downloads/hadoop-2.10.1
+            - HADOOP_CONF_DIR=/root/downloads/hadoop-2.10.1/etc/hadoop
         volumes:
             - $PWD/../hosts.temp:/etc/hosts
             - $PWD/../sshd_config.temp:/etc/ssh/sshd_config
             - $PWD/../data-shared:/root/downloads
             - $PWD/data/master-0:/root/data
         privileged: true
+        ports:
+            - "50070:50070"
         tty: true
         networks:
             db_net:
