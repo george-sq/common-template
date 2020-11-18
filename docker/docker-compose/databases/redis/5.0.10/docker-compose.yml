@@ -1,0 +1,27 @@
+version: '3.7'
+
+services:
+  redis:
+    image: redis:5.0.10
+    container_name: redis5
+    privileged: true
+    restart: always
+    command: redis-server --appendonly yes --requirepass redis321
+    volumes:
+      - $PWD/config/redis.conf:/etc/redis/redis.conf
+      - $PWD/data:/data
+    ports:
+      - "19736:6379"
+    environment:
+      TZ: 'Asia/Shanghai'
+    networks:
+      db_net:
+        ipv4_address: 172.21.0.98
+        aliases:
+          - redis5
+
+networks:
+  db_net:
+    external: true
+    name: db_net
+
